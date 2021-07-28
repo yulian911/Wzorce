@@ -20,6 +20,9 @@ export const Navbar = () => {
           <li>
             <NavLink to="/count">Count</NavLink>
           </li>
+          <li>
+            <NavLink to="/movie">Movie</NavLink>
+          </li>
         </ul>
       </div>
     </nav>
