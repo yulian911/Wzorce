@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar } from "./components/Navbar/Navbar";
 import { Todo } from "./pages/Todo";
 import { Count } from "./pages/Counter";

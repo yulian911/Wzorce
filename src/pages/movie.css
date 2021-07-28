@@ -1,4 +1,10 @@
 .movie-app > .row {
   overflow-x: auto;
   flex-wrap: nowrap;
+  width:100%;
+  
+}
+.rows{
+  display:flex;
+  flex-wrap: nowrap;
 }

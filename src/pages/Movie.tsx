@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MovieList } from "../components/Movie/MovieList";
 import "./movie.css";
+import cx from 'classnames'
+import axios from "axios";
 export interface MovieState {
   Title: string;
   Year: string;
@@ -8,77 +10,28 @@ export interface MovieState {
   Type: string;
   Poster: string;
 }
-export const Movie = () => {
-  const [movies, setMovie] = useState<MovieState[]>([
-    {
-      Title: "Starwars: Goretech",
-      Year: "2018",
-      imdbID: "tt9336300",
-      Type: "movie",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BNTI5OTBhMGYtNTZlNS00MjMzLTk5NTEtZDZkODM5YjYzYmE5XkEyXkFqcGdeQXVyMzU0OTU0MzY@._V1_SX300.jpg",
-    },
-    {
-      Title: "Starwars: Goretech",
-      Year: "2018",
-      imdbID: "tt9336300",
-      Type: "movie",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BNTI5OTBhMGYtNTZlNS00MjMzLTk5NTEtZDZkODM5YjYzYmE5XkEyXkFqcGdeQXVyMzU0OTU0MzY@._V1_SX300.jpg",
-    },
-    {
-      Title: "Starwars: Goretech",
-      Year: "2018",
-      imdbID: "tt9336300",
-      Type: "movie",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BNTI5OTBhMGYtNTZlNS00MjMzLTk5NTEtZDZkODM5YjYzYmE5XkEyXkFqcGdeQXVyMzU0OTU0MzY@._V1_SX300.jpg",
-    },
-    {
-      Title: "Starwars: Goretech",
-      Year: "2018",
-      imdbID: "tt9336300",
-      Type: "movie",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BNTI5OTBhMGYtNTZlNS00MjMzLTk5NTEtZDZkODM5YjYzYmE5XkEyXkFqcGdeQXVyMzU0OTU0MzY@._V1_SX300.jpg",
-    },
-    {
-      Title: "Starwars: Goretech",
-      Year: "2018",
-      imdbID: "tt9336300",
-      Type: "movie",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BNTI5OTBhMGYtNTZlNS00MjMzLTk5NTEtZDZkODM5YjYzYmE5XkEyXkFqcGdeQXVyMzU0OTU0MzY@._V1_SX300.jpg",
-    },
-    {
-      Title: "Starwars: Goretech",
-      Year: "2018",
-      imdbID: "tt9336300",
-      Type: "movie",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BNTI5OTBhMGYtNTZlNS00MjMzLTk5NTEtZDZkODM5YjYzYmE5XkEyXkFqcGdeQXVyMzU0OTU0MzY@._V1_SX300.jpg",
-    },
-    {
-      Title: "Starwars: Goretech",
-      Year: "2018",
-      imdbID: "tt9336300",
-      Type: "movie",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BNTI5OTBhMGYtNTZlNS00MjMzLTk5NTEtZDZkODM5YjYzYmE5XkEyXkFqcGdeQXVyMzU0OTU0MzY@._V1_SX300.jpg",
-    },
-    {
-      Title: "Starwars: Goretech",
-      Year: "2018",
-      imdbID: "tt9336300",
-      Type: "movie",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BNTI5OTBhMGYtNTZlNS00MjMzLTk5NTEtZDZkODM5YjYzYmE5XkEyXkFqcGdeQXVyMzU0OTU0MzY@._V1_SX300.jpg",
-    },
-  ]);
 
+export const Movie = () => {
+  const [movies, setMovie] = useState<MovieState[]>([ ]);
+  const [search ,setSearch]=useState()
+
+  const getMovieRequest =async()=>{
+    
+    
+    const res= await axios.get('http://www.omdbapi.com/?s=star wars&apikey=a98284e8' )
+    const resJson=JSON.parse(JSON.stringify(res)).data
+    setMovie(resJson.Search)
+  
+  }
+  useEffect(() => {
+    getMovieRequest()
+    
+    
+  }, [])
+ 
   return (
-    <div className="container-fluid movie-app">
-      <div className="row">
+    <div className=' container-fluid movie-app'>
+      <div className=' row'>
         <MovieList movies={movies} />
       </div>
     </div>

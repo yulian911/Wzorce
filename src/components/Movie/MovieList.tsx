@@ -6,10 +6,12 @@ interface MovieProps {
 
 export const MovieList = ({ movies }: MovieProps) => {
   return (
-    <div>
-      {movies.map((movie, index) => (
+    <>
+       
+      {movies.map((movie, index) => (<div key={movie.imdbID} style={{width:'23%'}}>
         <img src={movie.Poster} alt="movie" />
+      </div>
       ))}
-    </div>
+    </>
   );
 };
