@@ -1,12 +1,19 @@
+import React from "hoist-non-react-statics/node_modules/@types/react";
 import styled from "styled-components";
 import { DiaryState } from "./Diary";
 
 export interface DiaryProps {
   diary: DiaryState;
-  handleEdit(e: React.MouseEvent<HTMLButtonElement>, diary: DiaryState): void;
+  // handleEdit(e: React.MouseEvent<HTMLButtonElement>, diary: DiaryState): void;
+  onRemove(id:number):void
 }
 
-export const DiaryItem = ({ diary, handleEdit }: DiaryProps) => {
+export const DiaryItem = ({ diary,  onRemove}: DiaryProps) => {
+
+  const handleRemove =(e:React.MouseEvent<HTMLButtonElement>,id:number)=>{
+    e.preventDefault()
+    onRemove(id)
+  }
   return (
     <TR>
       <TD>{diary.Data}</TD>
@@ -15,7 +22,7 @@ export const DiaryItem = ({ diary, handleEdit }: DiaryProps) => {
       <TD>{diary.Miara}</TD>
       <TD>{diary.Uwaga}</TD>
       <TD>
-        <button onClick={(e) => handleEdit(e, diary)}>Edycja</button>
+        <button onClick={(e) =>handleRemove(e, diary.id)}>Edycja</button>
       </TD>
     </TR>
   );

@@ -58,68 +58,14 @@ export const Diary = () => {
       Miara: addForm.Miara,
       Uwaga: addForm.Uwaga,
     };
-    const newDiarys = [...diarys, newDiary];
-    setDiarys(newDiarys);
-  };
-  // edit form
-  const handleEditFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    const fieldName = e.target.getAttribute("name");
-    const fieldValue = e.target.value;
-    const newAddForm = { ...editForm };
-    if (fieldName !== null) {
-      newAddForm[fieldName] = fieldValue;
-    }
-    setEditForm(newAddForm);
-  };
-  const [editForm, setEditForm] = useState<any>({
-    Data: "",
-    Posilek: "",
-    Produkty: "",
-    Miara: "",
-    Uwaga: "",
-  });
-  // zapisz form
-  const handleEditFormSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    const editedDiary = {
-      id: editiD,
-      Data: editForm.Data,
-      Posilek: editForm.Posilek,
-      Produkty: editForm.Produkty,
-      Miara: editForm.Miara,
-      Uwaga: editForm.Uwaga,
-    };
-    const newDiarys = [...diarys];
-    const index = diarys.findIndex((diary) => diary.id === editiD);
-
-    newDiarys[index] = editedDiary;
-    setDiarys(newDiarys);
-    setEditiD(null);
+    
+    setDiarys((prev)=>[...prev ,newDiary]);
   };
 
-  // edit form
+  const handleRemove =(id:number)=>{
+      setDiarys(prev=>prev.filter(diary=>diary.id !==id))
+  }
 
-  // edycja po ID
-  const [editiD, setEditiD] = useState<any>(null);
-
-  const handleEditClicker = (
-    e: React.MouseEvent<HTMLButtonElement>,
-    diary: DiaryState
-  ) => {
-    e.preventDefault();
-
-    setEditiD(diary.id);
-    const formValue = {
-      Data: diary.Data,
-      Posilek: diary.Posilek,
-      Produkty: diary.Produkty,
-      Miara: diary.Miara,
-      Uwaga: diary.Uwaga,
-    };
-    setEditForm(formValue);
-  };
-  // edycja po id
   return (
     <DivContainer>
       <Table>
@@ -135,21 +81,14 @@ export const Diary = () => {
         </thead>
         <tbody>
           {diarys.map((diary) => (
-            <>
-              {editiD === diary.id ? (
-                <EditDiary
-                  handleEditFormSubmit={() => handleEditFormSubmit}
-                  handleEditFormChange={() => handleEditFormChange}
-                  editForm={editForm}
-                />
-              ) : (
+         
                 <DiaryItem
                   diary={diary}
                   key={diary.id}
-                  handleEdit={handleEditClicker}
+                  onRemove={handleRemove}
+                 
                 />
-              )}
-            </>
+           
           ))}
         </tbody>
       </Table>
