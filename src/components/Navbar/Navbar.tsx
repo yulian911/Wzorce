@@ -23,6 +23,12 @@ export const Navbar = () => {
           <li>
             <NavLink to="/movie">Movie</NavLink>
           </li>
+          <li>
+            <NavLink to="/notes">Notes</NavLink>
+          </li>
+          <li>
+            <NavLink to="/crypto">Crypto API</NavLink>
+          </li>
         </ul>
       </div>
     </nav>

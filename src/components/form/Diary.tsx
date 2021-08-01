@@ -85,7 +85,7 @@ export const Diary = () => {
                 <DiaryItem
                   diary={diary}
                   key={diary.id}
-                  onRemove={handleRemove}
+                 onRemove={handleRemove}
                  
                 />
            
