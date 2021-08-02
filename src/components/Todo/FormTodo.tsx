@@ -14,7 +14,7 @@ export const FormTodo = ({ onAdd }: FormTodoProps) => {
       <h1 style={{ textAlign: "center" }}>
         Lista Todo to do wpisz cos i nacisnij ENETER
       </h1>
-      <input type="text" ref={ref} onKeyDown={handleKeyDown} />
+      <input style={{color:'#20c997'}} type="text" ref={ref} onKeyDown={handleKeyDown} />
     </div>
   );
 };

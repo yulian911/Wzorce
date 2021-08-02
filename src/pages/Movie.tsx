@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MovieList } from "../components/Movie/MovieList";
 import "./movie.css";
 import cx from 'classnames'
@@ -13,7 +13,7 @@ export interface MovieState {
 
 export const Movie = () => {
   const [movies, setMovie] = useState<MovieState[]>([ ]);
-  const [search ,setSearch]=useState()
+  const [search ,setSearch]=useState('')
 
   const getMovieRequest =async()=>{
     
@@ -28,11 +28,17 @@ export const Movie = () => {
     
     
   }, [])
- 
+
+
+  const handleSearchMovie =(e:React.ChangeEvent<HTMLInputElement>)=>{
+    setSearch(e.target.value)
+  }
   return (
     <div className=' container-fluid movie-app'>
+      <div><input style={{color:'#20c997'}} type="text" onChange={handleSearchMovie} /></div>
       <div className=' row'>
-        <MovieList movies={movies} />
+
+        <MovieList movies={movies.filter(movie=>movie.Title.toLowerCase().includes(search))} />
       </div>
     </div>
   );

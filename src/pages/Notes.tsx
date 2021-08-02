@@ -15,31 +15,7 @@ const Notes=() =>{
 
     const[search ,setSearch]=useState<string>('')
     const[notes ,setNotes]=useState<NotesState[]>([
-        {
-            id:Date.now,
-            title:'Ja piernicze',
-            date:'24/07/21'
-        },
-        {
-            id:Date.now,
-            title:'Ja piernicze',
-            date:'24/07/21'
-        },
-        {
-            id:Date.now,
-            title:'Ja piernicze',
-            date:'24/07/21'
-        },
-        {
-            id:Date.now,
-            title:'Ja piernicze',
-            date:'24/07/21'
-        },
-        {
-            id:Date.now,
-            title:'Ja piernicze',
-            date:'24/07/21'
-        }
+       
     ])
     const addNote =(title:string)=>{
 

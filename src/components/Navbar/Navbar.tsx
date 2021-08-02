@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import styled from "styled-components";
 
 export const Navbar = () => {
   return (
@@ -29,8 +30,17 @@ export const Navbar = () => {
           <li>
             <NavLink to="/crypto">Crypto API</NavLink>
           </li>
+          <li>
+            <NavLink to="/dropdown">Dropdown</NavLink>
+          </li>
+          <li>
+            <NavLink to="/todo-contex">Todo Contex</NavLink>
+          </li>
+       
         </ul>
+        
       </div>
     </nav>
   );
 };
+
