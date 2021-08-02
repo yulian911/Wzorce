@@ -1,4 +1,3 @@
-import { nanoid } from "@reduxjs/toolkit";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { DiaryItem, DiaryProps } from "./DiaryItem";
@@ -58,13 +57,13 @@ export const Diary = () => {
       Miara: addForm.Miara,
       Uwaga: addForm.Uwaga,
     };
-    
-    setDiarys((prev)=>[...prev ,newDiary]);
+
+    setDiarys((prev) => [...prev, newDiary]);
   };
 
-  const handleRemove =(id:number)=>{
-      setDiarys(prev=>prev.filter(diary=>diary.id !==id))
-  }
+  const handleRemove = (id: number) => {
+    setDiarys((prev) => prev.filter((diary) => diary.id !== id));
+  };
 
   return (
     <DivContainer>
@@ -81,14 +80,7 @@ export const Diary = () => {
         </thead>
         <tbody>
           {diarys.map((diary) => (
-         
-                <DiaryItem
-                  diary={diary}
-                  key={diary.id}
-                 onRemove={handleRemove}
-                 
-                />
-           
+            <DiaryItem diary={diary} key={diary.id} onRemove={handleRemove} />
           ))}
         </tbody>
       </Table>

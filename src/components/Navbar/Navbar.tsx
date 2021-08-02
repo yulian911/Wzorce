@@ -29,6 +29,9 @@ export const Navbar = () => {
           <li>
             <NavLink to="/crypto">Crypto API</NavLink>
           </li>
+          <li>
+            <NavLink to="/click">Clicked</NavLink>
+          </li>
         </ul>
       </div>
     </nav>
